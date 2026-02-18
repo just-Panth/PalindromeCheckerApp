@@ -16,13 +16,9 @@ public class PalindromeCheckerApp {
             deque.addLast(c); //
         }
 
-        // Flag to track palindrome result
         boolean isPalindrome = true; //
 
-        // Continue comparison while more than one element exists
-        // If 0 or 1 element remains, the comparison is complete.
-        while (deque.size() > 1) { //
-            // removeFirst() pulls from the front, removeLast() pulls from the back
+        while (deque.size() > 1) { 
             char front = deque.removeFirst(); //
             char back = deque.removeLast();   //
 
