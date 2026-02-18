@@ -5,22 +5,19 @@ import java.util.Deque;
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
-        // Define the input string
-        String input = "refer"; //
+        String input = "refer"; 
 
-        // Create a Deque to store characters
-        Deque<Character> deque = new ArrayDeque<>(); //
+        Deque<Character> deque = new ArrayDeque<>(); 
 
-        // Add each character to the deque
         for (char c : input.toCharArray()) {
-            deque.addLast(c); //
+            deque.addLast(c); 
         }
 
-        boolean isPalindrome = true; //
+        boolean isPalindrome = true; 
 
         while (deque.size() > 1) { 
-            char front = deque.removeFirst(); //
-            char back = deque.removeLast();   //
+            char front = deque.removeFirst(); 
+            char back = deque.removeLast();   
 
             if (front != back) {
                 isPalindrome = false;
