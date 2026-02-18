@@ -11,8 +11,6 @@ public class PalindromeCheckerApp {
         // Create a Stack to store characters.
         Stack<Character> stack = new Stack<>();
 
-        // Push each character of the string into the stack.
-        // As characters are pushed, the first character ends up at the bottom.
         for (char c : input.toCharArray()) {
             stack.push(c);
         }
