@@ -1,9 +1,19 @@
+
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        System.out.println("Welcome to the Palindrome Checker Management System!");
-
-        System.out.println("Application Version: 1.0");
-        System.out.println("Startup flow established. Ready for Use Case 2.");
+        String input = "radar";
+        boolean isPalindrome = true;
+        System.out.println("Checking string: " + input);
+        for (int i = 0; i < input.length() / 2; i++) {
+            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
         }
+        if (isPalindrome) {
+            System.out.println("The string \"" + input + "\" is a palindrome.");
+        } else {
+            System.out.println("The string \"" + input + "\" is NOT a palindrome.");
+        }
+    }
 }
-
