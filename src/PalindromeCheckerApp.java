@@ -2,38 +2,34 @@
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
-        String input = "kayak";
+        // The original input string with mixed casing and spaces
+        String input = "A man a plan a canal Panama";
 
-        // Start the recursive check from the first and last indices
-        boolean result = check(input, 0, input.length() - 1);
+        // Step 1: Normalization
+        // replaceAll("[^a-zA-Z0-String]", "") removes all non-alphanumeric characters
+        // toLowerCase() ensures case-insensitivity
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        System.out.println("Input String: " + input);
-        if (result) {
+        boolean isPalindrome = true;
+
+        // Step 2: Compare characters from both ends
+        // Loop only till half of the normalized string length
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            // Compare symmetric characters
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Step 3: Display results
+        System.out.println("Original: " + input);
+        System.out.println("Normalized: " + normalized);
+        if (isPalindrome) {
             System.out.println("Result: The string is a palindrome.");
         } else {
             System.out.println("Result: The string is NOT a palindrome.");
         }
-    }
-
-    /**
-     * Recursively checks whether a string is a palindrome.
-     * * @param s     Input string
-     * @param start Starting index
-     * @param end   Ending index
-     * @return true if palindrome, otherwise false
-     */
-    private static boolean check(String s, int start, int end) {
-        // Base Case: If pointers meet or cross, all checks passed
-        if (start >= end) {
-            return true;
-        }
-
-        // Check if characters at current positions match
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
-
-        // Recursive call: move inward by incrementing start and decrementing end
-        return check(s, start + 1, end - 1);
     }
 }
