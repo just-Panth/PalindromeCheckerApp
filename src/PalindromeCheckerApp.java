@@ -25,7 +25,6 @@ public class PalindromeCheckerApp {
             }
         }
 
-        // Display the result
         System.out.println("Input String: " + input);
         if (isPalindrome) {
             System.out.println("Result: The string is a palindrome.");
