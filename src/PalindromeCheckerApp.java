@@ -1,10 +1,11 @@
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
-
     public static void main(String[] args) {
-        String input = "deified";
-        PalindromeService service = new PalindromeService();
+        String input = "malayalam";
 
-        boolean result = service.checkPalindrome(input);
+        PalindromeStrategy strategy = new StackStrategy();
+        boolean result = strategy.check(input);
 
         System.out.println("Input String: " + input);
         if (result) {
@@ -15,18 +16,23 @@ public class PalindromeCheckerApp {
     }
 }
 
-class PalindromeService {
+interface PalindromeStrategy {
+    boolean check(String input);
+}
 
-    public boolean checkPalindrome(String input) {
-        int start = 0;
-        int end = input.length() - 1;
+class StackStrategy implements PalindromeStrategy {
+    @Override
+    public boolean check(String input) {
+        Stack<Character> stack = new Stack<>();
 
-        while (start < end) {
-            if (input.charAt(start) != input.charAt(end)) {
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
                 return false;
             }
-            start++;
-            end--;
         }
         return true;
     }
