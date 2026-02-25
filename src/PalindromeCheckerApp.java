@@ -1,35 +1,33 @@
-
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
-        // The original input string with mixed casing and spaces
-        String input = "A man a plan a canal Panama";
+        String input = "deified";
+        PalindromeService service = new PalindromeService();
 
-        // Step 1: Normalization
-        // replaceAll("[^a-zA-Z0-String]", "") removes all non-alphanumeric characters
-        // toLowerCase() ensures case-insensitivity
-        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        boolean result = service.checkPalindrome(input);
 
-        boolean isPalindrome = true;
-
-        // Step 2: Compare characters from both ends
-        // Loop only till half of the normalized string length
-        for (int i = 0; i < normalized.length() / 2; i++) {
-
-            // Compare symmetric characters
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        // Step 3: Display results
-        System.out.println("Original: " + input);
-        System.out.println("Normalized: " + normalized);
-        if (isPalindrome) {
+        System.out.println("Input String: " + input);
+        if (result) {
             System.out.println("Result: The string is a palindrome.");
         } else {
             System.out.println("Result: The string is NOT a palindrome.");
         }
+    }
+}
+
+class PalindromeService {
+
+    public boolean checkPalindrome(String input) {
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
     }
 }
